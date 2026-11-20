@@ -4,16 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Leya Semaan · Mechanical Engineering Portfolio</title>
-<meta name="description" content="Engineering student portfolio: machine elements, structural analysis and Python.">
+<meta name="description" content="Engineering student portfolio: machine elements, structural analysis and Formula Student.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=DM+Mono:wght@400;500&display=swap">
 <style>
 :root{
-  --blush:#F6DADF;      /* hero + card art background */
-  --accent:#F0A9BC;     /* highlight pink */
+  --blush:#FADAD9;      /* Pale Blush: hero background */
+  --rose:#F3C3C5;       /* Light Rose: card art */
+  --accent:#E9ABAE;     /* Soft Coral Pink: highlights and big blocks */
+  --warm:#E0959C;       /* Warm Pink: small labels on dark */
+  --raspberry:#D78289;  /* Muted Raspberry: portrait shadow */
+  --antique:#CE6F79;    /* Antique Rose */
+  --vintage:#C65C69;    /* Vintage Pink: links and hover */
   --ink:#17121A;        /* text, borders, dark section */
-  --paper:#FBF7F5;      /* page background */
+  --paper:#FFF6F5;      /* page background */
   --muted:#5C4F57;
   --pad:clamp(20px,5vw,64px);
   --max:1240px;
@@ -22,6 +27,7 @@
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:17px;line-height:1.55}
 a{color:inherit;text-decoration:none}
+::selection{background:var(--accent)}
 .wrap{max-width:var(--max);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
 .mono{font-family:'DM Mono',monospace}
 h1,h2,h3{margin:0}
@@ -43,59 +49,82 @@ h1,h2,h3{margin:0}
 .btn{display:inline-flex;align-items:center;min-height:48px;padding:0 28px;border-radius:999px;font-family:'DM Mono',monospace;font-size:14px;font-weight:500;border:1.5px solid var(--ink)}
 .btn.solid{background:var(--ink);color:var(--paper)}
 .btn:hover{opacity:.8}
+.btn.solid:hover{background:var(--vintage);border-color:var(--vintage);opacity:1}
 .portrait{flex:0 1 360px;width:100%;max-width:360px;margin:0 auto;display:flex;flex-direction:column;gap:10px;font-family:'DM Mono',monospace;font-size:12px}
 .dim{display:flex;align-items:center;gap:8px}
 .dim i{display:block;height:1px;background:var(--ink);flex:1}
 .dim b{display:block;width:1px;height:14px;background:var(--ink)}
-.frame{aspect-ratio:4/5;border:1.5px solid var(--ink);border-radius:28px;background:var(--paper);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.frame img{width:100%;height:100%;object-fit:cover}
+.frame{position:relative;aspect-ratio:4/5;border:1.5px solid var(--ink);border-radius:28px;background:var(--paper);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:10px 10px 0 var(--raspberry)}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .frame span{letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .scale{text-align:right;color:var(--muted)}
 
 .intro{padding-top:56px;text-align:center;font-size:clamp(18px,2.2vw,24px);font-weight:600}
 
-/* work */
+/* section heads */
 .sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:36px}
 .sec-head h2{font-size:clamp(48px,8vw,104px)}
 .sec-head p{margin:0;max-width:340px;font-size:16px;color:var(--muted)}
+
+/* about */
+#about{padding-top:80px;padding-bottom:20px}
+.about{display:flex;flex-wrap:wrap;gap:32px 64px;align-items:flex-start}
+.about h2{flex:1 1 280px;font-size:clamp(48px,8vw,104px)}
+.about-text{flex:2 1 400px;display:flex;flex-direction:column;gap:16px;font-size:19px}
+.about-text p{margin:0}
+.about-text .lead{font-size:clamp(22px,2.6vw,32px);line-height:1.2;font-weight:600;letter-spacing:-.01em}
+
+/* work */
 #work{padding-top:72px;padding-bottom:40px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:20px}
 .card{background:#fff;border:1.5px solid var(--ink);border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
-.art{height:220px;display:flex;align-items:center;justify-content:center;border-bottom:1.5px solid var(--ink)}
+.art{height:240px;display:flex;align-items:center;justify-content:center;border-bottom:1.5px solid var(--ink)}
 .art svg{width:74%;height:80%}
 .art img{width:100%;height:100%;object-fit:cover}
 .card-body{padding:28px;display:flex;flex-direction:column;gap:12px;flex:1}
 .tag{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .card h3{font-weight:800;font-size:30px;line-height:1.05;letter-spacing:-.02em}
 .card p{margin:0;color:#4A3F46;font-size:16px}
-.card .more{margin-top:auto;padding-top:8px;font-family:'DM Mono',monospace;font-size:14px;font-weight:500}
+.card .more{margin-top:auto;padding-top:8px;font-family:'DM Mono',monospace;font-size:14px;font-weight:500;color:var(--vintage)}
 .card .more:hover{text-decoration:underline;text-underline-offset:5px}
-
-/* method */
-.method{background:var(--ink);color:var(--paper);margin-top:56px}
-.method .wrap{padding-top:88px;padding-bottom:88px}
-.method h2{color:var(--accent)}
-.method .sec-head{margin-bottom:48px}
-.method .sec-head p{color:#D9CDD3}
-.row{border-top:1px solid rgba(251,247,245,.3);padding:24px 0;display:flex;flex-wrap:wrap;gap:8px 32px;align-items:baseline}
-.row:last-child{border-bottom:1px solid rgba(251,247,245,.3)}
-.row .n{font-family:'DM Mono',monospace;font-size:14px;color:var(--accent);flex:0 0 40px}
-.row .t{flex:1 1 240px;font-weight:600;font-size:24px}
-.row .d{flex:1 1 320px;color:#D9CDD3}
 
 /* formula student */
 #formula{padding-top:88px;padding-bottom:40px}
-.fs{background:var(--accent);border:1.5px solid var(--ink);border-radius:28px;padding:clamp(28px,5vw,56px);display:flex;flex-wrap:wrap;gap:28px 56px;align-items:center}
-.fs h2{flex:1 1 300px;font-weight:800;font-size:clamp(36px,5vw,64px);line-height:.98;letter-spacing:-.03em}
-.fs div{flex:1 1 340px;display:flex;flex-direction:column;gap:12px;font-size:18px}
-.fs p{margin:0}
+.fs{background:var(--accent);border:1.5px solid var(--ink);border-radius:28px;padding:clamp(28px,5vw,56px);display:flex;flex-direction:column;gap:40px}
+.fs-top{display:flex;flex-wrap:wrap;gap:28px 56px;align-items:flex-start}
+.fs-top h2{flex:1 1 300px;font-weight:800;font-size:clamp(36px,5vw,64px);line-height:.98;letter-spacing:-.03em}
+.fs-text{flex:1 1 340px;display:flex;flex-direction:column;gap:14px;font-size:18px}
+.fs-text p{margin:0}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.facts span{font-family:'DM Mono',monospace;font-size:13px;border:1.5px solid var(--ink);border-radius:999px;padding:6px 16px;background:var(--paper)}
+.fs-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px}
+.fs-gallery figure{margin:0;display:flex;flex-direction:column;gap:8px}
+.shot{position:relative;aspect-ratio:4/3;border:1.5px solid var(--ink);border-radius:20px;background:var(--paper);overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fs-gallery figcaption{font-family:'DM Mono',monospace;font-size:13px}
+.fs-docs{display:flex;flex-wrap:wrap;gap:12px}
+
+/* certificates (dark band) */
+.dark{background:var(--ink);color:var(--paper);margin-top:72px}
+.dark .wrap{padding-top:88px;padding-bottom:88px}
+.dark h2{color:var(--accent)}
+.dark .sec-head p{color:#D9CDD3}
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:20px}
+.cert{border:1px solid rgba(255,248,244,.3);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:10px}
+.cert .year{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--warm)}
+.cert h3{font-weight:800;font-size:28px;line-height:1.05;letter-spacing:-.02em}
+.cert p{margin:0;color:#D9CDD3;font-size:16px}
+.cert .more{margin-top:auto;padding-top:8px;font-family:'DM Mono',monospace;font-size:14px;font-weight:500}
+.cert .more:hover{text-decoration:underline;text-underline-offset:5px}
 
 /* contact */
-#contact{padding-top:72px;padding-bottom:48px}
+#contact{padding-top:88px;padding-bottom:48px}
 #contact h2{font-size:clamp(48px,9vw,132px);letter-spacing:-.04em}
-.pills{margin-top:36px;display:flex;flex-wrap:wrap;gap:12px}
-.pill{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;border:1.5px solid var(--ink);font-family:'DM Mono',monospace;font-size:14px}
-a.pill:hover{background:var(--ink);color:var(--paper)}
+.contact-list{margin-top:40px;border-top:1.5px solid var(--ink)}
+.contact-row{display:flex;flex-wrap:wrap;gap:6px 32px;align-items:baseline;padding:20px 0;border-bottom:1.5px solid var(--ink)}
+.contact-row .k{flex:0 0 140px;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.contact-row .v{flex:1 1 260px;font-size:clamp(20px,2.6vw,30px);font-weight:600;word-break:break-word}
+a.v:hover{text-decoration:underline;text-underline-offset:6px}
 footer{margin-top:72px;padding-top:20px;border-top:1.5px solid var(--ink);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-family:'DM Mono',monospace;font-size:12px;color:var(--muted)}
 </style>
 </head>
@@ -104,28 +133,31 @@ footer{margin-top:72px;padding-top:20px;border-top:1.5px solid var(--ink);displa
 <header class="hero">
   <div class="wrap">
     <nav class="nav" aria-label="Main">
-      <span style="font-weight:500">Leya Semaan </span>
+      <span style="font-weight:500">Leya Semaan</span>
       <div class="links">
-        <a href="#work">work</a><a href="#method">method</a><a href="#formula">formula student</a><a href="#contact">contact</a>
+        <a href="#about">about</a><a href="#work">work</a><a href="#formula">formula student</a><a href="#certificates">certificates</a><a href="#contact">contact</a>
       </div>
     </nav>
 
     <div class="hero-grid">
       <div class="hero-text">
-        <div class="eyebrow">Mechanical Engineering student · Technische Hochschule Nürnberg Georg Simon Ohm· Germany</div>
-        <h1 class="big">Strong by <span class="hl">design.</span></h1>
-        <p>Machines, calculations and code, worked out carefully and shown clearly. Here is what I have built so far.</p>
+        <div class="eyebrow">Mechanical Engineering student · Technische Hochschule Nürnberg Georg Simon Ohm · Germany</div>
+        <h1 class="big">Engineering <span class="hl">portfolio.</span></h1>
+        
         <div class="btns">
-          <a class="btn solid" href="#work">see the work</a>
-          <a class="btn" href="#contact">download cv</a> <!-- TODO: point href at your CV file, e.g. cv.pdf -->
+          <a class="btn solid" href="#work">see my work</a>
+          <!-- Add your CV PDF to this folder and name it cv.pdf. It opens in a new tab. -->
+          <a class="btn" href="cv.pdf" target="_blank" rel="noopener">view CV (PDF)</a>
         </div>
       </div>
 
       <div class="portrait">
         <div class="dim" aria-hidden="true"><b></b><i></i><span>Ø 360</span><i></i><b></b></div>
         <div class="frame">
-          <!-- TODO: replace the span with <img src="portrait.jpg" alt="Portrait of Lea"> -->
           <span>[ your portrait ]</span>
+          <!-- Put your photo in the same folder as this file and name it portrait.jpg.
+               If the file is missing, the placeholder text above stays visible. -->
+          <img src="portrait.jpg" alt="Portrait of Leya Semaan" onerror="this.remove()">
         </div>
         <div class="scale">scale 1 : 1</div>
       </div>
@@ -134,18 +166,29 @@ footer{margin-top:72px;padding-top:20px;border-top:1.5px solid var(--ink);displa
 </header>
 
 <main>
-  <p class="intro wrap">Mechanical design + structural analysis + Python. Applied to real hardware.</p>
+  
+
+  <section id="about" class="wrap" aria-labelledby="about-title">
+    <div class="about">
+      <h2 id="about-title" class="big">About me.</h2>
+      <div class="about-text">
+        <!-- EDIT: write your own introduction in the three paragraphs below -->
+        <p class="lead">[One sentence that sums you up, e.g. who you are and what drives you as an engineer.]</p>
+        <p>[Paragraph 2: where you come from, why you chose mechanical engineering, and what brought you to Germany.]</p>
+        <p>[Paragraph 3: what you are interested in, what you want to learn next, and what kind of internship or project you are looking for.]</p>
+      </div>
+    </div>
+  </section>
 
   <section id="work" class="wrap" aria-labelledby="work-title">
     <div class="sec-head">
-      <h2 id="work-title" class="big">The Work.</h2>
-      <p>Three projects from my first year, each taken from requirement to calculation.</p>
+      <h2 id="work-title" class="big">My Work.</h2>
+      <p>University Projects</p>
     </div>
 
     <div class="cards">
       <article class="card">
-        <div class="art" style="background:var(--blush)">
-          <!-- TODO: swap the drawing for <img src="scissor-lift.jpg" alt="..."> -->
+        <div class="art" style="background:var(--rose)">
           <svg viewBox="0 0 240 170" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M30 148H210M40 40H200M60 148L180 94M180 148L60 94M60 94L180 40M180 94L60 40"/><circle cx="120" cy="121" r="4" fill="currentColor"/><circle cx="120" cy="67" r="4" fill="currentColor"/><path d="M30 160H210" stroke-dasharray="2 5"/></svg>
         </div>
         <div class="card-body">
@@ -167,54 +210,93 @@ footer{margin-top:72px;padding-top:20px;border-top:1.5px solid var(--ink);displa
           <a class="more" href="#">case study →</a>
         </div>
       </article>
-
-      <article class="card">
-        <div class="art" style="background:var(--accent)">
-          <svg viewBox="0 0 240 170" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M30 150H110M70 150V104L120 60L166 88"/><path d="M166 88L186 78M166 88L184 104"/><circle cx="70" cy="104" r="6" fill="currentColor"/><circle cx="120" cy="60" r="6" fill="currentColor"/><path d="M186 104C210 130 150 140 128 128" stroke-dasharray="3 6"/></svg>
-        </div>
-        <div class="card-body">
-          <div class="tag">Python · Simulation</div>
-          <h3>Robot cell simulation</h3>
-          <p>Object-oriented model of a pick-and-place cell with Cylinder, PickList and RobotPLC classes, CSV input and matplotlib plots.</p>
-          <a class="more" href="#">view the code →</a>
-        </div>
-      </article>
     </div>
   </section>
 
-  <section id="method" class="method" aria-labelledby="method-title">
+  <section id="formula" class="wrap" aria-labelledby="fs-title">
+    <div class="fs">
+      <div class="fs-top">
+        <h2 id="fs-title">Formula Student.</h2>
+        <div class="fs-text">
+          <p>I work with a Formula Student team, where class calculations meet real hardware and real deadlines.</p>
+          <!-- EDIT the text below to describe your own work -->
+          <p>[Describe what you worked on: which part of the car, what the problem was, what you designed or calculated, and what the result was.]</p>
+          <div class="facts">
+            <!-- EDIT or delete these tags -->
+            <span>[Subteam]</span>
+            <span>[Your role]</span>
+            <span>[Season 2026]</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photos and drawings: put the image files in the same folder as this file
+           and name them fs-1.jpg, fs-2.jpg, fs-3.jpg (or change the names below).
+           To add more, copy one <figure> block. -->
+      <div class="fs-gallery">
+        <figure>
+          <div class="shot"><span>[ photo 1 ]</span><img src="fs-1.jpg" alt="Formula Student work, photo 1" onerror="this.remove()"></div>
+          <figcaption>[Caption: what is shown]</figcaption>
+        </figure>
+        <figure>
+          <div class="shot"><span>[ photo 2 ]</span><img src="fs-2.jpg" alt="Formula Student work, photo 2" onerror="this.remove()"></div>
+          <figcaption>[Caption: what is shown]</figcaption>
+        </figure>
+        <figure>
+          <div class="shot"><span>[ photo 3 ]</span><img src="fs-3.jpg" alt="Formula Student work, photo 3" onerror="this.remove()"></div>
+          <figcaption>[Caption: what is shown]</figcaption>
+        </figure>
+      </div>
+
+      <!-- Optional: a PDF of a report or calculation. Delete this block if you don't need it. -->
+      <div class="fs-docs">
+        <a class="btn solid" href="formula-student-report.pdf" target="_blank" rel="noopener">open the report (pdf)</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="certificates" class="dark" aria-labelledby="cert-title">
     <div class="wrap">
       <div class="sec-head">
-        <h2 id="method-title" class="big">The Method.</h2>
-        <p>How I approach a design problem, in four steps.</p>
+        <h2 id="cert-title" class="big">Certificates.</h2>
+        <p>Courses, languages and qualifications.</p>
       </div>
-      <div>
-        <div class="row"><span class="n">01</span><span class="t">Start from the load case</span><span class="d">Forces, service factors and required life are fixed before any geometry is drawn.</span></div>
-        <div class="row"><span class="n">02</span><span class="t">Check against the standard</span><span class="d">VDI 2230, Eurocode 3 and DIN, so every dimension traces back to a source.</span></div>
-        <div class="row"><span class="n">03</span><span class="t">Model it in CAD</span><span class="d">Confirm fits, tolerances and assembly before anything is built.</span></div>
-        <div class="row"><span class="n">04</span><span class="t">Write it down</span><span class="d">Reports that show every step, so the reasoning is easy to follow and check.</span></div>
+      <!-- EDIT each card with your own certificate. To add one, copy a whole <article> block.
+           To link a scan, put the PDF in the same folder and set href to its name.
+           Delete the "view certificate" link if you don't want one. -->
+      <div class="certs">
+        <article class="cert">
+          <div class="year">[Year]</div>
+          <h3>[Certificate name]</h3>
+          <p>[Issuer, e.g. university, platform or institution. One line on what it covers.]</p>
+          <a class="more" href="certificate-1.pdf" target="_blank" rel="noopener">view certificate →</a>
+        </article>
+        <article class="cert">
+          <div class="year">[Year]</div>
+          <h3>[Certificate name]</h3>
+          <p>[Issuer. One line on what it covers.]</p>
+          <a class="more" href="certificate-2.pdf" target="_blank" rel="noopener">view certificate →</a>
+        </article>
+        <article class="cert">
+          <div class="year">[Year]</div>
+          <h3>[Certificate name]</h3>
+          <p>[Issuer. One line on what it covers.]</p>
+          <a class="more" href="certificate-3.pdf" target="_blank" rel="noopener">view certificate →</a>
+        </article>
       </div>
     </div>
   </section>
 
-  <section id="formula" class="wrap">
-    <div class="fs">
-      <h2>Formula Student.</h2>
-      <div>
-        <p>I work with a Formula Student team, where class calculations meet real hardware and real deadlines.</p>
-        <p class="mono" style="font-size:14px;font-weight:500">[YOUR SUBTEAM AND WHAT YOU WORKED ON]</p>
-      </div>
+  <section id="contact" class="wrap" aria-labelledby="contact-title">
+    <h2 id="contact-title" class="big">Contact.</h2>
+    <div class="contact-list">
+      <div class="contact-row"><span class="k">Email</span><a class="v" href="mailto:lea.semaann@outlook.com">lea.semaann@outlook.com</a></div>
+      <div class="contact-row"><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/leya-semaan-528173299" target="_blank" rel="noopener">linkedin.com/in/leya-semaan</a></div>
+      <div class="contact-row"><span class="k">Location</span><span class="v">Nürnberg, Germany</span></div>
+      <!-- Optional: add a phone number by copying a row:
+      <div class="contact-row"><span class="k">Phone</span><a class="v" href="tel:+49...">+49 ...</a></div> -->
     </div>
-  </section>
-
-  <section id="contact" class="wrap">
-    <h2 class="big">Let's build something.</h2>
-    <div class="pills">
-      <!-- TODO: turn these into <a class="pill" href="mailto:..."> links -->
-      <a class="pill" href="mailto:lea.semaann@outlook.com">lea.semaann@outlook.com</a>
-      <a class="pill" href="https://www.linkedin.com/in/leya-semaan-528173299" target="_blank" rel="noopener">linkedin</a>
-    </div>
-    <footer><span>Leya Semaan· Mechanical engineering portfolio</span><span>2026</span></footer>
+    <footer><span>Leya Semaan · Mechanical engineering portfolio</span><span>2026</span></footer>
   </section>
 </main>
 
